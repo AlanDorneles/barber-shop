@@ -6,6 +6,7 @@ import BookingItem from "../components/booking-item";
 import { db } from "../_lib/prisma";
 import BarbershopItem from "./_components/barbershop-item";
 
+
 export default async function Home() {
   const barbershop = await db.barbershop.findMany({})
   return (
@@ -37,6 +38,19 @@ export default async function Home() {
           </div>
 
         </div>
+        <div className="mt-5">
+          <h2 className='text-sm mb-3 uppercase text-gray-400 font-bold'>Populares</h2>
+          <div  className="flex gap-2 overflow-x-auto [&::-webkit-scrollbar]:hidden">
+            {barbershop.map((barbershop) => (
+              <BarbershopItem key={barbershop.id} barbershop={barbershop}/>
+
+            ))}
+            <h1>{barbershop.name}</h1>
+
+          </div>
+
+        </div>
+        
         
       </div>
     </div>
