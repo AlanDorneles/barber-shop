@@ -38,7 +38,7 @@ export default async function Home() {
           </div>
 
         </div>
-        <div className="mt-5">
+        <div className="mt-5 mb-[4.5rem]">
           <h2 className='text-sm mb-3 uppercase text-gray-400 font-bold'>Populares</h2>
           <div  className="flex gap-2 overflow-x-auto [&::-webkit-scrollbar]:hidden">
             {barbershop.map((barbershop) => (
