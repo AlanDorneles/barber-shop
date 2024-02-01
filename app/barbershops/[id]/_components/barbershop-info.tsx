@@ -1,46 +1,67 @@
 "use client";
+
+import SideMenu from "@/app/components/side-menu";
 import { Button } from "@/app/components/ui/button";
+import { Sheet, SheetContent, SheetTrigger } from "@/app/components/ui/sheet";
 import { Barbershop } from "@prisma/client";
-import { ChevronLeft, MapPin, MenuIcon, Star } from "lucide-react";
+import { ChevronLeftIcon, MapPinIcon, MenuIcon, StarIcon } from "lucide-react";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
-interface BarbershopInfoProp {
-    barbershop : Barbershop
+
+interface BarbershopInfoProps {
+  barbershop: Barbershop;
 }
 
-const  BarbershopInfo = ({barbershop}:BarbershopInfoProp) => {
+const BarbershopInfo = ({ barbershop }: BarbershopInfoProps) => {
+  const router = useRouter();
 
-    const router = useRouter()
+  const handleBackClick = () => {
+    router.replace("/");
+  };
 
-    const handleBackClick= ()=> {
-        router.back()
-        
-    }
-    return ( 
-        <>
-        <div className="h-[250px] w-full relative">
-        <Button size="icon" className="absolute left-3 top-3 z-50" onClick={handleBackClick}>
-            <ChevronLeft/>
+  return (
+    <div>
+      <div className="h-[250px] w-full relative">
+        <Button onClick={handleBackClick} size="icon" variant="outline" className="z-50 absolute top-4 left-4">
+          <ChevronLeftIcon />
         </Button>
-        <Button size="icon"  className="absolute right-3 top-3 z-50">
-            <MenuIcon/>
-        </Button>
-        <Image src={barbershop.imageUrl} fill alt={barbershop.name} style={{objectFit:"cover"}}/>
+
+        <Sheet>
+          <SheetTrigger asChild>
+            <Button size="icon" variant="outline" className="z-50 absolute top-4 right-4">
+              <MenuIcon />
+            </Button>
+          </SheetTrigger>
+
+          <SheetContent className="p-0">
+            <SideMenu />
+          </SheetContent>
+        </Sheet>
+
+        <Image
+          src={barbershop.imageUrl}
+          fill
+          alt={barbershop.name}
+          style={{
+            objectFit: "cover",
+          }}
+          className="opacity-75"
+        />
+      </div>
+
+      <div className="px-5 pt-3 pb-6 border-b border-solid border-secondary">
+        <h1 className="text-xl font-bold">{barbershop.name}</h1>
+        <div className="flex items-center gap-1 mt-2">
+          <MapPinIcon className="text-primary" size={18} />
+          <p className="text-sm">{barbershop.address}</p>
+        </div>
+        <div className="flex items-center gap-1 mt-2">
+          <StarIcon className="text-primary" size={18} />
+          <p className="text-sm">5,0 (899 avaliações)</p>
+        </div>
+      </div>
     </div>
-    <div className=" mt-2 p-2 gap-2 border-b-2 border-secondary ">
-        <h1 >{barbershop.name}</h1>
-        
-        <div className="flex gap-2 items-center mt-2">
-            <MapPin className="text-primary"/>
-            <p>{barbershop.address}</p>
-        </div>
-        <div className="flex gap-2 mt-2 mb-2 ">
-            <Star className="text-primary"/>
-            <p>5,0 (899 avaliações)</p>
-        </div>
-    </div >
-    </>
-     );
-}
- 
-export default BarbershopInfo ;
+  );
+};
+
+export default BarbershopInfo;
