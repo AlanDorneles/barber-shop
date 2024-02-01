@@ -84,3 +84,4 @@ model Service {
   imageUrl     String
   bookings     Booking[]
 }
+
