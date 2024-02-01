@@ -1,4 +1,4 @@
-import { Header } from "../components/ui/header";
+import { Header } from "../components/header";
 import { format } from "date-fns";
 import { ptBR } from "date-fns/locale";
 import Search from "./_components/search";
