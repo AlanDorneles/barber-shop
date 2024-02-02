@@ -1,5 +1,4 @@
 "use client";
-
 import { Button } from "@/app/components/ui/button";
 import { Calendar } from "@/app/components/ui/calendar";
 import { Card, CardContent } from "@/app/components/ui/card";
@@ -25,7 +24,6 @@ interface ServiceItemProps {
 
 const ServiceItem = ({ service, barbershop, isAuthenticated }: ServiceItemProps) => {
   const router = useRouter();
-
   const { data } = useSession();
 
   const [date, setDate] = useState<Date | undefined>(undefined);
@@ -33,7 +31,6 @@ const ServiceItem = ({ service, barbershop, isAuthenticated }: ServiceItemProps)
   const [submitIsLoading, setSubmitIsLoading] = useState(false);
   const [sheetIsOpen, setSheetIsOpen] = useState(false);
   const [dayBookings, setDayBookings] = useState<Booking[]>([]);
-  const [loading ,setLoading] = useState(false)
 
   useEffect(() => {
     if (!date) {
@@ -92,9 +89,10 @@ const ServiceItem = ({ service, barbershop, isAuthenticated }: ServiceItemProps)
         }),
         action: {
           label: "Visualizar",
-          onClick: () => router.push("/bookings"),
+          onClick: () => console.log('ok'),
         },
       });
+
     } catch (error) {
       console.error(error);
     } finally {
@@ -256,7 +254,6 @@ const ServiceItem = ({ service, barbershop, isAuthenticated }: ServiceItemProps)
                   <SheetFooter className="px-5 mb-6">
                     <Button onClick={handleBookingSubmit} disabled={!hour || !date || submitIsLoading}>
                       {submitIsLoading && <Loader2 className="mr-2 h-4 w-4 animate-spin" />}
-                      <Loader2 className="mr-2 h-4 w-4 animate-spin"/>
                       Confirmar reserva
                     </Button>
                   </SheetFooter>
