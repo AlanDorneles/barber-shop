@@ -33,6 +33,7 @@ const ServiceItem = ({ service, barbershop, isAuthenticated }: ServiceItemProps)
   const [submitIsLoading, setSubmitIsLoading] = useState(false);
   const [sheetIsOpen, setSheetIsOpen] = useState(false);
   const [dayBookings, setDayBookings] = useState<Booking[]>([]);
+  const [loading ,setLoading] = useState(false)
 
   useEffect(() => {
     if (!date) {
@@ -157,18 +158,19 @@ const ServiceItem = ({ service, barbershop, isAuthenticated }: ServiceItemProps)
                   </Button>
                 </SheetTrigger>
 
-                <SheetContent className="p-0 overflow-y-auto">
+                <SheetContent className="p-0 overflow-y-auto [&::-webkit-scrollbar]:hidden ">
                   <SheetHeader className="text-left px-5 py-6 border-b border-solid border-secondary">
                     <SheetTitle>Fazer Reserva</SheetTitle>
                   </SheetHeader>
 
-                  <div className="py-6">
+                  <div className="py-6 ">
                     <Calendar
                       mode="single"
                       selected={date}
                       onSelect={handleDateClick}
                       locale={ptBR}
                       fromDate={new Date()}
+                      className="w-min-[260px]"
                       styles={{
                         head_cell: {
                           width: "100%",
@@ -254,6 +256,7 @@ const ServiceItem = ({ service, barbershop, isAuthenticated }: ServiceItemProps)
                   <SheetFooter className="px-5 mb-6">
                     <Button onClick={handleBookingSubmit} disabled={!hour || !date || submitIsLoading}>
                       {submitIsLoading && <Loader2 className="mr-2 h-4 w-4 animate-spin" />}
+                      <Loader2 className="mr-2 h-4 w-4 animate-spin"/>
                       Confirmar reserva
                     </Button>
                   </SheetFooter>
