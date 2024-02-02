@@ -22,8 +22,8 @@ const BarbershopItem = ({ barbershop }: BarbershopItemProps) => {
   }
   return (
 
-    <Card className="min-w-[167px] max-w-[167px] rounded-2xl">
-      <CardContent className="px-1 py-0">
+    <Card className="min-w-[200px] max-w-[167px] rounded-2xl">
+      <CardContent className="px-0 py-0">
 
         <div className="px-1 h-[159px] w-full relative ">
             <div className="absolute top-2 left-2 z-50 ">
@@ -38,7 +38,7 @@ const BarbershopItem = ({ barbershop }: BarbershopItemProps) => {
           width={0}
           sizes="100vm"
           alt={barbershop.name}
-          className=" rounded-xl"
+          className=" rounded-t-xl"
           style={{
             objectFit:"cover",
           }}

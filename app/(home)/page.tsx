@@ -13,7 +13,7 @@ export default async function Home() {
     <div>
       <Header />
       <div className="p-5">
-        <div className="pt-5">
+        <div className="pt-5 mb-4">
           <h2 className="text-xl font-bold">Olá, Alan</h2>
           <p className="capitalize text-sm">
             {format(new Date(), "EEEE' ,' d 'de ' MMM", {
@@ -28,7 +28,7 @@ export default async function Home() {
         </div>
         <div className="mt-5">
           <h2 className='text-sm mb-3 uppercase text-gray-400 font-bold'>Recomendados</h2>
-          <div  className="flex gap-2 overflow-x-auto [&::-webkit-scrollbar]:hidden">
+          <div  className="flex gap-4 overflow-x-auto [&::-webkit-scrollbar]:hidden">
             {barbershop.map((barbershop) => (
               <BarbershopItem key={barbershop.id} barbershop={barbershop}/>
 
@@ -40,7 +40,7 @@ export default async function Home() {
         </div>
         <div className="mt-5 mb-[4.5rem]">
           <h2 className='text-sm mb-3 uppercase text-gray-400 font-bold'>Populares</h2>
-          <div  className="flex gap-2 overflow-x-auto [&::-webkit-scrollbar]:hidden">
+          <div  className="flex gap-4 overflow-x-auto [&::-webkit-scrollbar]:hidden">
             {barbershop.map((barbershop) => (
               <BarbershopItem key={barbershop.id} barbershop={barbershop}/>
 

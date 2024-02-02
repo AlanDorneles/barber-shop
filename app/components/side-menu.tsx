@@ -20,9 +20,9 @@ const SideMenu = () => {
     return ( 
 <>
 
-            <SheetHeader className="text-left">
-              <SheetTitle>
-                <h1>Menu</h1>
+            <SheetHeader className="text-left ">
+              <SheetTitle className="flex w-full items-center  ">
+                <h2 className="w-full text-center mt-2">Menu</h2>
               </SheetTitle>
             </SheetHeader>
 
